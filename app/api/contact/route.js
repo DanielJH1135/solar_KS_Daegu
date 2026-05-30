@@ -3,14 +3,18 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   try {
     const body = await request.json();
-    // 1. 프론트엔드에서 넘어오는 부지 형태(type) 변수를 추가로 받아옵니다.
     const { name, phone, type, content } = body;
 
-    // 2. 확인된 진짜 대구지사 그룹방 ID 및 봇 토큰 강제 고정
+    // ==========================================
+    // 1. 환경 설정 (텔레그램 및 구글 앱스 스크립트 고정)
+    // ==========================================
     const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; 
     const REAL_CHAT_ID = '-1003994233094'; 
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGmWhWy2-iaZFJTxLeRcEKS1Ynunqb_7Plz-OtPtDI2Zo6QUbAeSB1STSdSLQHPgA/exec';
 
-    // 3. 메시지 포맷 구성 ('부지형태' 항목 추가 완료)
+    // ==========================================
+    // 2. 텔레그램 알림톡 발송 처리
+    // ==========================================
     const message = `
 📢 [KS에너지 대구지사] 새 상담 신청
 - 성함: ${name}
@@ -19,11 +23,10 @@ export async function POST(request) {
 - 문의내용: ${content || '없음'}
     `.trim();
 
-    // 4. 텔레그램 API 발송 주소
     const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     
-    // 5. 발송 처리 (REAL_CHAT_ID를 문자열로 정확하게 매칭)
-    const response = await fetch(telegramUrl, {
+    // 비동기로 텔레그램 발송
+    const telegramPromise = fetch(telegramUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -32,10 +35,32 @@ export async function POST(request) {
       }),
     });
 
-    if (!response.ok) {
-      const errorData = await response.json();
+    // ==========================================
+    // 3. 구글 스프레드시트(Apps Script) 적재 처리
+    // ==========================================
+    const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        type: type || '선택 안 함',
+        content: content || '없음'
+      }),
+    });
+
+    // 두 개의 요청을 동시에 실행하여 속도 최적화
+    const [teleRes, sheetRes] = await Promise.all([telegramPromise, googleSheetsPromise]);
+
+    // 텔레그램 로그 확인
+    if (!teleRes.ok) {
+      const errorData = await teleRes.json();
       console.error('텔레그램 전송 실패 원인:', errorData);
-      return NextResponse.json({ success: false, error: '텔레그램 전송 실패' }, { status: 500 });
+    }
+    
+    // 구글 시트 로그 확인
+    if (!sheetRes.ok) {
+      console.error('구글 시트 전송 실패');
     }
 
     return NextResponse.json({ success: true });
