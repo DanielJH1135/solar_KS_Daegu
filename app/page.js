@@ -54,7 +54,7 @@ export default function Home() {
             <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded">대구지사</span>
           </div>
           <a href="#contact" className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
-            無料 상담 신청
+            무료 상담 신청
           </a>
         </div>
       </header>
