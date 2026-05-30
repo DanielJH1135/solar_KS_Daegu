@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans antialiased">
       
-      {/* GNB (헤더 상단 바 - 대구지사 전용 직통번호 강조) */}
+      {/* GNB (헤더 상단 바) */}
       <header className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -64,7 +64,7 @@ export default function Home() {
             </span>으로 바꿉니다
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            본사의 독보적인 시공 역량และ 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 대구·경북 최고의 태양광 파트너를 만나보세요.
+            본사의 독보적인 시공 역량과 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 대구 경북 최고의 태양광 파트너를 만나보세요.
           </p>
           <a href="#contact" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
             대구지사 무료 현장 실사 신청
@@ -77,9 +77,9 @@ export default function Home() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <div>
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">Proven Track Record</span>
-            <h3 className="text-2xl font-bold mt-1 mb-3 text-white">롯데타워·시그니엘서울이 선택한 검증된 기술력</h3>
+            <h3 className="text-2xl font-bold mt-1 mb-3 text-white">롯데타워 시그니엘서울이 선택한 검증된 기술력</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
-              국내 최고층 빌딩인 롯데타워와 특급호텔 시그니엘서울의 데이터 기반 전기요금 절감 컨설팅을 성공시킨 KS에너지의 기술력 그대로, 대구·경북 발전소 시공을 책임집니다.
+              국내 최고층 빌딩인 롯데타워와 특급호텔 시그니엘서울의 데이터 기반 전기요금 절감 컨설팅을 성공시킨 KS에너지의 기술력 그대로, 대구 경북 발전소 시공을 책임집니다.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 비즈니스 협력사 무한 롤링 배너 (본사 파트너사 연동) */}
+      {/* 비즈니스 협력사 무한 롤링 배너 */}
       <section className="bg-white border-b border-slate-200 py-8 overflow-hidden select-none">
         <div className="max-w-7xl mx-auto px-6 mb-3">
           <p className="text-center text-xs font-bold text-slate-400 tracking-wider uppercase">
@@ -123,7 +123,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. 핵심 사업 영역 (Our Service) */}
+      {/* 2. 핵심 사업 영역 */}
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-emerald-600 text-xs font-bold uppercase tracking-wider">Our Service</span>
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. 왜 대구지사인가? */}
+      {/* 3. 강점 */}
       <section className="bg-slate-900 text-white py-20 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -164,13 +164,13 @@ export default function Home() {
               태양광 발전소는 한 번 구축하면 20년 이상 가동됩니다. 시공업체가 멀리 있거나 도중에 사라지면 발전 손실을 고스란히 사업주가 떠안게 됩니다. 
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
-              <strong>KS에너지 대구지사</strong>는 대구·경북 전 지역에 문제가 발생할 시 즉각 출동할 수 있는 지역 밀착형 사후관리 인프라를 약속합니다.
+              <strong>KS에너지 대구지사</strong>는 대구 경북 전 지역에 문제가 발생할 시 즉각 출동할 수 있는 지역 밀착형 사후관리 인프라를 약속합니다.
             </p>
           </div>
           <div className="bg-slate-850 border border-slate-800 p-8 rounded-2xl space-y-4">
             <div className="flex gap-4 items-start">
               <span className="text-emerald-400 text-lg">✔</span>
-              <p className="text-sm text-slate-300">대구·경북 전 지역 24시간 이내 즉각 출동 AS</p>
+              <p className="text-sm text-slate-300">대구 경북 전 지역 24시간 이내 즉각 출동 AS</p>
             </div>
             <div className="flex gap-4 items-start">
               <span className="text-emerald-400 text-lg">✔</span>
@@ -184,7 +184,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. 문의하기 폼 (CTA) */}
+      {/* 4. 문의하기 폼 */}
       <section id="contact" className="py-20 px-6 max-w-xl mx-auto">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-10">
           <div className="text-center mb-8">
