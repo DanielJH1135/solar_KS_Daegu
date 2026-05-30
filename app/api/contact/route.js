@@ -4,7 +4,7 @@ export async function POST(request) {
   try {
     const { name, phone, type, content } = await request.json();
 
-    const TELEGRAM_BOT_TOKEN = '8774928836:AAHfvCLcb_0-XHwgRTNJ_SXX8YVYUEfOEXo'; 
+    const TELEGRAM_BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; 
     const TELEGRAM_CHAT_ID = '1781982606'; 
 
     // 💡 백틱(`) 기호가 정확히 감싸져 있어야 에러가 안 납니다.
