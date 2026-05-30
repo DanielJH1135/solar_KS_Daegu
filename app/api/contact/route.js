@@ -7,7 +7,7 @@ export async function POST(request) {
 
     // 1. 대구지사 텔레그램 그룹방 ID 및 봇 토큰 설정
     const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; // 여기에 기존 봇 토큰을 그대로 넣어주세요!
-    const CHAT_ID = '-1002235252874'; // 대구지사 그룹방 ID 반영 완료
+    const CHAT_ID = '-5180379766'; // 대구지사 그룹방 ID 반영 완료
 
     // 2. 텔레그램으로 보낼 메시지 포맷 구성
     const message = `
