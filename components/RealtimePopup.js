@@ -2,18 +2,21 @@
 
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 
+// 1. 평상시 무작위로 돌릴 주머니 데이터
 const locations = [
   '대구 달서구', '대구 북구', '대구 서구', '대구 동구', '대구 수성구', '대구 달성군',
-  '경북 구미', '경북 칠곡', '경북 경산', '경북 왜관', '경북 영천', '경북 포항', '경북 경주','경남 밀양', '경남 사천', '경남 창녕', '경남 김해','경남 창원시'
+  '경북 구미', '경북 칠곡', '경북 경산', '경북 왜관', '경북 영천', '경북 포항', '경북 경주'
 ];
 
-const targets = ['** 법인', '** 사장님', '** 대표님', '** 창고', '** 공장', '** 산업', '**ENG', '****공업','**공업', '**철강', '*축산', '*****마트', '**주차장'];
+const targets = ['** 법인', '** 사장님', '** 대표님', '** 창고', '** 공장', '** 산업','*축산','**ENG', '**CNC', '***정밀'];
 
 const suffixes = [
   '방금 전 상담 신청 완료!',
   '3분 전 지원사업 문의 완료!',
   '방금 전 부지 검토 신청 완료!',
   '1분 전 실시간 상담 접수!'
+  '실시간 상담 접수 완료!'
+  '상담 접수 완료'
 ];
 
 const RealtimePopup = forwardRef((props, ref) => {
@@ -21,6 +24,7 @@ const RealtimePopup = forwardRef((props, ref) => {
   const [text, setText] = useState('');
   const [animate, setAnimate] = useState(false);
 
+  // 평상시 무작위 문장 조립 (지역 포함)
   const generateRandomToast = () => {
     const loc = locations[Math.floor(Math.random() * locations.length)];
     const tar = targets[Math.floor(Math.random() * targets.length)];
@@ -28,16 +32,20 @@ const RealtimePopup = forwardRef((props, ref) => {
     return `${loc} ${tar} ${suf}`;
   };
 
+  // 2. [수정] 진짜 신청이 들어왔을 때 실행되는 함수 (지역 제거 및 부지 형태 매칭)
   useImperativeHandle(ref, () => ({
     triggerRealToast: (name, type) => {
-      let cleanLoc = locations[Math.floor(Math.random() * locations.length)];
+      // 이름 마스킹 처리 (예: 이정현 -> 이** 사장님)
       const maskedName = name ? `${name.charAt(0)}** 사장님` : '** 사장님';
+      // 부지 형태 매칭 (값이 없으면 기본값 지정)
+      const selectedType = type ? type : '공장 지붕 / 건물 옥상';
       
       setAnimate(false);
       setVisible(false);
       
       setTimeout(() => {
-        setText(`📢 [실시간] ${cleanLoc} ${maskedName} 방금 전 상담 신청 완료!`);
+        // [수정 완료] 지역 노출을 빼고 이름과 부지 형태 기반으로 깔끔하게 출력
+        setText(`📢 [실시간] ${maskedName} [${selectedType}] 방금 전 상담 신청 완료!`);
         setVisible(true);
         setAnimate(true);
       }, 200);
@@ -57,7 +65,7 @@ const RealtimePopup = forwardRef((props, ref) => {
 
         setTimeout(() => {
           setAnimate(false);
-          setTimeout(() => setVisible(false), 300); // 사라지는 애니메이션 대기
+          setTimeout(() => setVisible(false), 300);
           startRandomLoop();
         }, 4000);
 
@@ -118,7 +126,7 @@ const styles = {
     fontSize: '14px',
     fontWeight: '500',
     border: '1px solid #e2e8f0',
-    transition: 'all 0.3s ease-out', // 자바스크립트 기반 컴포넌트 스타일로 부드럽게 처리
+    transition: 'all 0.3s ease-out',
     maxWidth: 'calc(100% - 40px)',
   },
   iconCircle: {
