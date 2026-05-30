@@ -2,38 +2,42 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
-    const { name, phone, type, content } = await request.json();
+    const body = await request.json();
+    const { name, phone, content } = body;
 
-    const TELEGRAM_BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; 
-    const TELEGRAM_CHAT_ID = '-1002235252874'; 
+    // 1. 대구지사 텔레그램 그룹방 ID 및 봇 토큰 설정
+    const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; // 여기에 기존 봇 토큰을 그대로 넣어주세요!
+    const CHAT_ID = '-1002235252874'; // 대구지사 그룹방 ID 반영 완료
 
-    // 💡 백틱(`) 기호가 정확히 감싸져 있어야 에러가 안 납니다.
-    const message = `🚨 [KS에너지 대구지사] 신규 상담 신청 🚨
+    // 2. 텔레그램으로 보낼 메시지 포맷 구성
+    const message = `
+📢 [KS에너지 대구지사] 새 상담 신청
+- 성함: ${name}
+- 연락처: ${phone}
+- 문의내용: ${content || '없음'}
+    `.trim();
 
-👤 성함/법인명: ${name}
-📞 연락처: ${phone}
-🏭 부지형태: ${type}
-📍 문의 및 주소: ${content}
-
-대구팀 신속하게 확인 후 연락 바랍니다!`.trim();
-
-    const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-    const res = await fetch(telegramUrl, {
+    // 3. 텔레그램 API 호출 (반드시 CHAT_ID 변수를 사용하도록 고정)
+    const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    
+    const response = await fetch(telegramUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: '1781982606',
+        chat_id: CHAT_ID, // 이 부분이 사장님 개인 ID 변수로 되어있었을 확률이 높습니다!
         text: message,
       }),
     });
 
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.description || '텔레그램 전송 실패');
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('텔레그램 전송 실패:', errorData);
+      return NextResponse.json({ success: false, error: '텔레그램 전송 실패' }, { status: 500 });
     }
 
-    return NextResponse.json({ message: 'Success' }, { status: 200 });
+    return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ message: 'Error', error: error.message }, { status: 500 });
+    console.error('서버 에러:', error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
