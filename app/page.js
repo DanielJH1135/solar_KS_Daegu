@@ -1,7 +1,6 @@
-import './globals.css'; // 
-import React, { useState } from 'react';
 'use client';
 
+import './globals.css';
 import React, { useState } from 'react';
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
     setStatus('sending');
 
     try {
-      // 💡 2단계에서 만들 메일 전송 API와 연동됩니다.
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -46,7 +44,7 @@ export default function Home() {
             <span className="font-black text-xl tracking-tight text-slate-900">KS에너지</span>
             <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded">대구경북지사</span>
           </div>
-          <a href="#contact" className="bg-slate-950 hover:bg-slate-900 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
+          <a href="#contact" className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
             무료 상담 신청
           </a>
         </div>
@@ -66,7 +64,7 @@ export default function Home() {
             </span>으로 바꿉니다
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            본사의 독보적인 시공 역량과 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 대구·경북 최고의 태양광 파트너를 만나보세요.
+            본사의 독보적인 시공 역량และ 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 대구·경북 최고의 태양광 파트너를 만나보세요.
           </p>
           <a href="#contact" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
             대구지사 무료 현장 실사 신청
@@ -166,7 +164,7 @@ export default function Home() {
               태양광 발전소는 한 번 구축하면 20년 이상 가동됩니다. 시공업체가 멀리 있거나 도중에 사라지면 발전 손실을 고스란히 사업주가 떠안게 됩니다. 
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
-              **KS에너지 대구지사**는 대구·경북 전 지역에 문제가 발생할 시 즉각 출동할 수 있는 지역 밀착형 사후관리 인프라를 약속합니다.
+              <strong>KS에너지 대구지사</strong>는 대구·경북 전 지역에 문제가 발생할 시 즉각 출동할 수 있는 지역 밀착형 사후관리 인프라를 약속합니다.
             </p>
           </div>
           <div className="bg-slate-850 border border-slate-800 p-8 rounded-2xl space-y-4">
@@ -186,7 +184,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. 문의하기 폼 (CTA - 사장님 주소로 다이렉트 수신) */}
+      {/* 4. 문의하기 폼 (CTA) */}
       <section id="contact" className="py-20 px-6 max-w-xl mx-auto">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-10">
           <div className="text-center mb-8">
