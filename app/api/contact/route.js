@@ -5,7 +5,7 @@ export async function POST(request) {
     const { name, phone, type, content } = await request.json();
 
     const TELEGRAM_BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; 
-    const TELEGRAM_CHAT_ID = '-1005180379766'; 
+    const TELEGRAM_CHAT_ID = '-5180379766'; 
 
     // 💡 백틱(`) 기호가 정확히 감싸져 있어야 에러가 안 납니다.
     const message = `🚨 [KS에너지 대구지사] 신규 상담 신청 🚨
