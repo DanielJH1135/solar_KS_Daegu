@@ -1,5 +1,5 @@
 {
-  "name": "KS-daegu",
+  "name": "KS-Energy-daegu",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,8 +11,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "tailwindcss": "latest",
-    "autoprefixer": "latest",
-    "postcss": "latest"
+    "tailwindcss": "3.4.1",
+    "autoprefixer": "10.4.19",
+    "postcss": "8.4.38"
   }
 }
