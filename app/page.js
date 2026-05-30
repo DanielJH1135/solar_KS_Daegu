@@ -132,7 +132,7 @@ export default function Home() {
         <div className="grid md:grid-cols-4 gap-6">
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
             <div className="text-slate-900 font-black text-xs uppercase tracking-wider mb-2 text-emerald-600">01</div>
-            <h3 className="text-lg font-bold mb-2 text-slate-900">발전사업</h3>
+            <h3 className="text-lg font-bold mb-2 text-slate-900">임대사업</h3>
             <p className="text-slate-600 text-xs leading-relaxed">토지 및 공장 지붕 맞춤형 태양광 발전소 설계 및 인허가 총괄</p>
           </div>
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
@@ -148,7 +148,7 @@ export default function Home() {
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
             <div className="text-slate-900 font-black text-xs uppercase tracking-wider mb-2 text-emerald-600">04</div>
             <h3 className="text-lg font-bold mb-2 text-slate-900">RE100 컨설팅</h3>
-            <p className="text-slate-600 text-xs leading-relaxed">글로벌 규제 및 기업 요구에 맞춘 신재생에너지 전환 솔루션</p>
+            <p className="text-slate-600 text-xs leading-relaxed">글로벌 규제 및 기업 요구에 맞춘 신재생에너지 전환 및 RE100 솔루션</p>
           </div>
         </div>
       </section>
@@ -229,7 +229,7 @@ export default function Home() {
       {/* 푸터 */}
       <footer className="bg-slate-950 text-slate-500 text-center py-8 text-xs border-t border-slate-900">
         <p>KS에너지 대구지사 | 비즈니스 문의 전용 랜딩페이지</p>
-        <p className="mt-1 text-slate-600">주소: 대구 서구 서대구로20 26층</p>
+        <p className="mt-1 text-slate-600">주소: 대구 서구 서대구로20 26층 3호</p>
       </footer>
     </div>
   );
