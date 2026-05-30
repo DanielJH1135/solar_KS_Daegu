@@ -1,9 +1,12 @@
 'use client';
 
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'; // 1. useRef를 추가했습니다.
+import RealtimePopup from './components/RealtimePopup'; // 2. 실시간 팝업 컴포넌트를 불러옵니다.
 
 export default function Home() {
+  // 3. 팝업 컴포넌트를 제어할 연결선(Ref)을 선언합니다.
+  const popupRef = useRef(null);
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -25,6 +28,12 @@ export default function Home() {
 
       if (res.ok) {
         setStatus('success');
+
+        // 4. [대박 핵심] 서버 전송이 성공한 바로 그 순간, 사용자가 입력한 값으로 팝업 새치기를 시전합니다!
+        if (popupRef.current) {
+          popupRef.current.triggerRealToast(formData.name, formData.type);
+        }
+
         setFormData({ name: '', phone: '', type: '공장 지붕 / 건물 옥상', content: '' });
       } else {
         setStatus('error');
@@ -45,7 +54,7 @@ export default function Home() {
             <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded">대구지사</span>
           </div>
           <a href="#contact" className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
-            무료 상담 신청
+            無料 상담 신청
           </a>
         </div>
       </header>
@@ -231,6 +240,9 @@ export default function Home() {
         <p>KS에너지 대구지사 | 비즈니스 문의 전용 랜딩페이지</p>
         <p className="mt-1 text-slate-600">주소: 대구 서구 서대구로20 26층 3호</p>
       </footer>
+
+      {/* 5. [수정 완료] 최하단 마감 전에 팝업 컴포넌트를 얹어주고 연결선을 장착합니다! */}
+      <RealtimePopup ref={popupRef} />
     </div>
   );
 }
