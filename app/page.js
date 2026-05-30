@@ -42,7 +42,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="font-black text-xl tracking-tight text-slate-900">KS에너지</span>
-            <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded">대구경북지사</span>
+            <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2 py-0.5 rounded">대구지사</span>
           </div>
           <a href="#contact" className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
             무료 상담 신청
@@ -60,11 +60,11 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
             노는 공장 지붕과 부지, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-              매달 확실한 태양광 연금
+              확실한 태양광 연금
             </span>으로 바꿉니다
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            본사의 독보적인 시공 역량과 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 대구 경북 최고의 태양광 파트너를 만나보세요.
+            본사의 독보적인 시공 역량과 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 최고의 태양광 파트너를 만나보세요.
           </p>
           <a href="#contact" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
             대구지사 무료 현장 실사 신청
@@ -77,19 +77,19 @@ export default function Home() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
           <div>
             <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">Proven Track Record</span>
-            <h3 className="text-2xl font-bold mt-1 mb-3 text-white">롯데타워 시그니엘서울이 선택한 검증된 기술력</h3>
+            <h3 className="text-2xl font-bold mt-1 mb-3 text-white">롯데타워 롯데물산이 선택한 검증된 기술력</h3>
             <p className="text-slate-400 text-sm leading-relaxed">
               국내 최고층 빌딩인 롯데타워와 특급호텔 시그니엘서울의 데이터 기반 전기요금 절감 컨설팅을 성공시킨 KS에너지의 기술력 그대로, 대구 경북 발전소 시공을 책임집니다.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-slate-800/50 border border-slate-700/50 p-6 rounded-xl text-center">
-              <p className="text-xs text-slate-400 font-medium">초고층 빌딩 레퍼런스</p>
-              <p className="text-lg font-black text-white mt-1">롯데월드타워</p>
+              <p className="text-xs text-slate-400 font-medium">공공기관 레퍼런스</p>
+              <p className="text-lg font-black text-white mt-1">서울시중구시설관리공단 에너지 절감 성과 실현</p>
             </div>
             <div className="bg-slate-800/50 border border-slate-700/50 p-6 rounded-xl text-center">
               <p className="text-xs text-slate-400 font-medium">최고급 호텔 레퍼런스</p>
-              <p className="text-lg font-black text-white mt-1">시그니엘 서울</p>
+              <p className="text-lg font-black text-white mt-1">시그니엘 서울 빌딩과 호텔 모두 절감 성과</p>
             </div>
           </div>
         </div>
@@ -109,16 +109,16 @@ export default function Home() {
             <span>SK E&S</span>
             <span>엔라이튼</span>
             <span>신성이엔지</span>
-            <span>에이치에너지</span>
-            <span>씨앤씨티에너지</span>
+            <span>H에너지</span>
+            <span>CNCITY ENERGY</span>
           </div>
           <div className="flex space-x-16 animate-marquee whitespace-nowrap text-xl font-bold text-slate-400 items-center absolute top-0 left-full pl-16">
             <span>한화솔루션</span>
             <span>SK E&S</span>
             <span>엔라이튼</span>
             <span>신성이엔지</span>
-            <span>에이치에너지</span>
-            <span>씨앤씨티에너지</span>
+            <span>H에너지</span>
+            <span>CNCITY ENERGY</span>
           </div>
         </div>
       </section>
@@ -137,8 +137,8 @@ export default function Home() {
           </div>
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
             <div className="text-slate-900 font-black text-xs uppercase tracking-wider mb-2 text-emerald-600">02</div>
-            <h3 className="text-lg font-bold mb-2 text-slate-900">전기공사</h3>
-            <p className="text-slate-600 text-xs leading-relaxed">안전을 최우선으로 하는 완벽하고 정밀한 책임 시공 시스템</p>
+            <h3 className="text-lg font-bold mb-2 text-slate-900">태양광 리스사업</h3>
+            <p className="text-slate-600 text-xs leading-relaxed">공장, 창고 등 지붕 맞춤형 발전소 및 초기비용 없이 태양광발전</p>
           </div>
           <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
             <div className="text-slate-900 font-black text-xs uppercase tracking-wider mb-2 text-emerald-600">03</div>
@@ -164,13 +164,13 @@ export default function Home() {
               태양광 발전소는 한 번 구축하면 20년 이상 가동됩니다. 시공업체가 멀리 있거나 도중에 사라지면 발전 손실을 고스란히 사업주가 떠안게 됩니다. 
             </p>
             <p className="text-slate-400 text-sm leading-relaxed">
-              <strong>KS에너지 대구지사</strong>는 대구 경북 전 지역에 문제가 발생할 시 즉각 출동할 수 있는 지역 밀착형 사후관리 인프라를 약속합니다.
+              <strong>KS에너지 대구지사</strong>는 대구 경북 전 지역에 문제가 발생할 시 즉각 대응할 수 있는 지역 밀착형 사후관리 인프라를 구축하고 있습니다.
             </p>
           </div>
           <div className="bg-slate-850 border border-slate-800 p-8 rounded-2xl space-y-4">
             <div className="flex gap-4 items-start">
               <span className="text-emerald-400 text-lg">✔</span>
-              <p className="text-sm text-slate-300">대구 경북 전 지역 24시간 이내 즉각 출동 AS</p>
+              <p className="text-sm text-slate-300">대구 경북 전 지역 24시간 이내 즉각 대응 AS</p>
             </div>
             <div className="flex gap-4 items-start">
               <span className="text-emerald-400 text-lg">✔</span>
@@ -208,6 +208,7 @@ export default function Home() {
                 <option>일반 토지 / 야산 / 나대지</option>
                 <option>전력비 절감 컨설팅</option>
                 <option>기타 부지</option>
+                <option>주차장+옥상</option>
               </select>
             </div>
             <div>
@@ -227,8 +228,8 @@ export default function Home() {
 
       {/* 푸터 */}
       <footer className="bg-slate-950 text-slate-500 text-center py-8 text-xs border-t border-slate-900">
-        <p>KS에너지 대구경북지사 | 비즈니스 문의 전용 랜딩페이지</p>
-        <p className="mt-1 text-slate-600">본사: 대전광역시 유성구 은구비남로 7번길 19</p>
+        <p>KS에너지 대구지사 | 비즈니스 문의 전용 랜딩페이지</p>
+        <p className="mt-1 text-slate-600">주소: 대구 서구 서대구로20 26층</p>
       </footer>
     </div>
   );
