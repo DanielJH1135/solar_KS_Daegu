@@ -7,7 +7,7 @@ export async function POST(request) {
 
     // 1. 확인된 진짜 대구지사 그룹방 ID 및 봇 토큰 강제 고정
     const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; // 사장님의 기존 진짜 봇 토큰을 적어주세요!
-    const REAL_CHAT_ID = '-5180379766'; // 텔레그램 로그로 교차 검증 완료된 진짜 ID
+    const REAL_CHAT_ID = '-1003994233094'; // 텔레그램 로그로 교차 검증 완료된 진짜 ID
 
     // 2. 메시지 포맷 구성
     const message = `
