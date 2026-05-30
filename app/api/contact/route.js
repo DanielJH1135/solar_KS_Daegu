@@ -3,24 +3,26 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, phone, content } = body;
+    // 1. 프론트엔드에서 넘어오는 부지 형태(type) 변수를 추가로 받아옵니다.
+    const { name, phone, type, content } = body;
 
-    // 1. 확인된 진짜 대구지사 그룹방 ID 및 봇 토큰 강제 고정
-    const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; // 사장님의 기존 진짜 봇 토큰을 적어주세요!
-    const REAL_CHAT_ID = '-1003994233094'; // 텔레그램 로그로 교차 검증 완료된 진짜 ID
+    // 2. 확인된 진짜 대구지사 그룹방 ID 및 봇 토큰 강제 고정
+    const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; 
+    const REAL_CHAT_ID = '-1003994233094'; 
 
-    // 2. 메시지 포맷 구성
+    // 3. 메시지 포맷 구성 ('부지형태' 항목 추가 완료)
     const message = `
 📢 [KS에너지 대구지사] 새 상담 신청
 - 성함: ${name}
 - 연락처: ${phone}
+- 부지형태: ${type || '선택 안 함'}
 - 문의내용: ${content || '없음'}
     `.trim();
 
-    // 3. 텔레그램 API 발송 주소
+    // 4. 텔레그램 API 발송 주소
     const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
     
-    // 4. 발송 처리 (REAL_CHAT_ID를 문자열로 정확하게 매칭)
+    // 5. 발송 처리 (REAL_CHAT_ID를 문자열로 정확하게 매칭)
     const response = await fetch(telegramUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
