@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react'; // 1. useRef를 추가했습니다.
-import RealtimePopup from './components/RealtimePopup'; // 2. 실시간 팝업 컴포넌트를 불러옵니다.
+import RealtimePopup from '../components/RealtimePopup'; // 점(.)을 두 개로 변경!
 
 export default function Home() {
   // 3. 팝업 컴포넌트를 제어할 연결선(Ref)을 선언합니다.
