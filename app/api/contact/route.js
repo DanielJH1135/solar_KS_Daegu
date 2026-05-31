@@ -8,9 +8,9 @@ export async function POST(request) {
     // ==========================================
     // 1. 환경 설정 (텔레그램 및 구글 앱스 스크립트 고정)
     // ==========================================
-    // .env.local 또는 서버 환경변수에서 안전하게 값을 꺼내옵니다.
-  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+    // Vercel 환경변수에서 철통보안 금고 값을 안전하게 꺼내옵니다.
+    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGmWhWy2-iaZFJTxLeRcEKS1Ynunqb_7Plz-OtPtDI2Zo6QUbAeSB1STSdSLQHPgA/exec';
 
     // ==========================================
@@ -24,14 +24,15 @@ export async function POST(request) {
 - 문의내용: ${content || '없음'}
     `.trim();
 
-    const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    // 💡 오타 났던 변수명을 상단 환경변수 이름(TELEGRAM_BOT_TOKEN)과 정확히 맞췄습니다!
+    const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
     
     // 비동기로 텔레그램 발송
     const telegramPromise = fetch(telegramUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: REAL_CHAT_ID,
+        chat_id: TELEGRAM_CHAT_ID, // 💡 REAL_CHAT_ID로 꼬여있던 부분을 올바르게 수정 완료!
         text: message,
       }),
     });
@@ -39,6 +40,7 @@ export async function POST(request) {
     // ==========================================
     // 3. 구글 스프레드시트(Apps Script) 적재 처리
     // ==========================================
+    // 💡 구글 시트 연동 로직과 주소는 완벽하므로 그대로 안전하게 유지합니다!
     const googleSheetsPromise = fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
