@@ -73,7 +73,7 @@ export default function Home() {
             </span>으로 바꿉니다
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            본사의 독보적인 시공 역량และ 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 최고의 태양광 파트너를 만나보세요.
+            본사의 독보적인 시공 역량, 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 최고의 태양광 파트너를 만나보세요.
           </p>
           <a href="#contact" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
             대구지사 무료 현장 실사 신청
@@ -207,8 +207,8 @@ export default function Home() {
       <section id="contact" className="py-20 px-6 max-w-xl mx-auto">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-10">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2">대구지사 무료 상담 신청</h2>
-            <p className="text-sm text-slate-500">정보를 남겨주시면 대구지사 전담 컨설턴트가 직접 연락드립니다.</p>
+            <h2 className="text-2xl font-bold text-slate-900 mb-2"> 무료 컨설팅 신청</h2>
+            <p className="text-sm text-slate-500">정보를 남겨주시면 대구지사 전담 컨설턴트가 직접 확인 후 연락드립니다.</p>
           </div>
           
           <form className="space-y-5" onSubmit={handleSubmit}>
@@ -236,7 +236,7 @@ export default function Home() {
             </div>
             
             <button type="submit" disabled={status === 'sending'} className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl shadow-md transition-colors text-sm mt-2">
-              {status === 'sending' ? '신청서 전송 중...' : '대구지사로 상담 신청하기'}
+              {status === 'sending' ? '신청서 전송 중...' : '무료 컨설팅 신청하기'}
             </button>
 
             {status === 'success' && <p className="text-center text-sm font-semibold text-emerald-600 mt-2">✨ 상담 신청이 정상적으로 완료되었습니다! 지사에서 곧 연락드리겠습니다.</p>}
