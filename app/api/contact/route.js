@@ -8,8 +8,9 @@ export async function POST(request) {
     // ==========================================
     // 1. 환경 설정 (텔레그램 및 구글 앱스 스크립트 고정)
     // ==========================================
-    const BOT_TOKEN = '8774928836:AAHL2aBueQvlhVk2-N6lbRqTANkwFeX9hk8'; 
-    const REAL_CHAT_ID = '-1003994233094'; 
+    // .env.local 또는 서버 환경변수에서 안전하게 값을 꺼내옵니다.
+  const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGmWhWy2-iaZFJTxLeRcEKS1Ynunqb_7Plz-OtPtDI2Zo6QUbAeSB1STSdSLQHPgA/exec';
 
     // ==========================================
