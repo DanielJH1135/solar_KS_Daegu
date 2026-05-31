@@ -73,7 +73,7 @@ export default function Home() {
             </span>으로 바꿉니다
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-            본사의 독보적인 시공 역량과 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 최고의 태양광 파트너를 만나보세요.
+            본사의 독보적인 시공 역량และ 대구지사의 신속한 지역 밀착형 관리(O&M)의 만남. 지금 최고의 태양광 파트너를 만나보세요.
           </p>
           <a href="#contact" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5">
             대구지사 무료 현장 실사 신청
@@ -104,7 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 비즈니스 협력사 무한 롤링 배너 */}
+      {/* 비즈니스 협력사 무한 롤링 배너 (모바일 겹침 억까 완전 해결 버젼) */}
       <section className="bg-white border-b border-slate-200 py-8 overflow-hidden select-none">
         <div className="max-w-7xl mx-auto px-6 mb-3">
           <p className="text-center text-xs font-bold text-slate-400 tracking-wider uppercase">
@@ -112,24 +112,34 @@ export default function Home() {
           </p>
         </div>
         
-        <div className="flex w-full overflow-hidden relative mt-2">
-          <div className="flex space-x-16 animate-marquee whitespace-nowrap text-xl font-bold text-slate-400 items-center">
-            <span>한화솔루션</span>
-            <span>SK E&S</span>
-            <span>엔라이튼</span>
-            <span>신성이엔지</span>
-            <span>H에너지</span>
-            <span>CNCITY ENERGY</span>
-          </div>
-          <div className="flex space-x-16 animate-marquee whitespace-nowrap text-xl font-bold text-slate-400 items-center absolute top-0 left-full pl-16">
-            <span>한화솔루션</span>
-            <span>SK E&S</span>
-            <span>엔라이튼</span>
-            <span>신성이엔지</span>
-            <span>H에너지</span>
-            <span>CNCITY ENERGY</span>
+        {/* 무한 전광판 기차 트랙 컨테이너 */}
+        <div style={marqueeStyles.marqueeContainer}>
+          <div style={marqueeStyles.marqueeTrack}>
+            {/* 원본 세트 */}
+            <span style={marqueeStyles.marqueeItem}>한화솔루션</span>
+            <span style={marqueeStyles.marqueeItem}>SK E&S</span>
+            <span style={marqueeStyles.marqueeItem}>엔라이튼</span>
+            <span style={marqueeStyles.marqueeItem}>신성이엔지</span>
+            <span style={marqueeStyles.marqueeItem}>H에너지</span>
+            <span style={marqueeStyles.marqueeItem}>CNCITY ENERGY</span>
+            
+            {/* 자연스러운 무한 루프용 복사본 세트 */}
+            <span style={marqueeStyles.marqueeItem}>한화솔루션</span>
+            <span style={marqueeStyles.marqueeItem}>SK E&S</span>
+            <span style={marqueeStyles.marqueeItem}>엔라이튼</span>
+            <span style={marqueeStyles.marqueeItem}>신성이엔지</span>
+            <span style={marqueeStyles.marqueeItem}>H에너지</span>
+            <span style={marqueeStyles.marqueeItem}>CNCITY ENERGY</span>
           </div>
         </div>
+
+        {/* CSS 키프레임 애니메이션 주입 */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes globalMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}} />
       </section>
 
       {/* 2. 핵심 사업 영역 */}
@@ -246,3 +256,27 @@ export default function Home() {
     </div>
   );
 }
+
+// 모바일 롤링 전광판 전용 보완 인라인 스타일 오브젝트
+const marqueeStyles = {
+  marqueeContainer: {
+    display: 'flex',
+    overflow: 'hidden',
+    width: '100%',
+    position: 'relative',
+    marginTop: '8px',
+  },
+  marqueeTrack: {
+    display: 'flex',
+    width: 'max-content',
+    animation: 'globalMarquee 20s linear infinite',
+  },
+  marqueeItem: {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    color: '#cbd5e1', 
+    padding: '0 32px', 
+    whiteSpace: 'nowrap',
+    display: 'inline-block',
+  }
+};
