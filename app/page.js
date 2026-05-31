@@ -208,7 +208,7 @@ export default function Home() {
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-10">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-2"> 무료 컨설팅 신청</h2>
-            <p className="text-sm text-slate-500">정보를 남겨주시면 대구지사 전담 컨설턴트가 직접 확인 후 연락드립니다.</p>
+            <p className="text-sm text-slate-500">정보를 남겨주시면 전담 컨설턴트가 직접 확인 후 연락드립니다.</p>
           </div>
           
           <form className="space-y-5" onSubmit={handleSubmit}>
