@@ -1,22 +1,36 @@
 'use client';
 
-import React, { useState, useRef } from 'react'; // 1. useRef를 추가했습니다.
-import RealtimePopup from '../components/RealtimePopup'; // 점(.)을 두 개로 변경!
+import React, { useState, useRef } from 'react';
+import RealtimePopup from '../components/RealtimePopup';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  // 3. 팝업 컴포넌트를 제어할 연결선(Ref)을 선언합니다.
   const popupRef = useRef(null);
+  const router = useRouter();
 
+  // ✅ 1. formData 상태에 address 항목 누락 없이 완벽 추가
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    address: '', 
     type: '공장 지붕 / 건물 옥상',
     content: ''
   });
   const [status, setStatus] = useState('');
+  
+  // ✅ 개인정보 동의 체크박스 및 모달 상태
+  const [privacyAgreed, setPrivacyAgreed] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 필수 동의 체크박스 검증 로직
+    if (!privacyAgreed) {
+      alert('개인정보 수집 및 이용에 동의하셔야 신청이 가능합니다.');
+      return;
+    }
+
     setStatus('sending');
 
     try {
@@ -29,12 +43,20 @@ export default function Home() {
       if (res.ok) {
         setStatus('success');
 
-        // 4. [대박 핵심] 서버 전송이 성공한 바로 그 순간, 사용자가 입력한 값으로 팝업 새치기를 시전합니다!
+        // 서버 전송 성공 시 실시간 팝업 새치기 토스트 실행
         if (popupRef.current) {
           popupRef.current.triggerRealToast(formData.name, formData.type);
         }
 
-        setFormData({ name: '', phone: '', type: '공장 지붕 / 건물 옥상', content: '' });
+        // ✅ 2. 전송 성공 후 초기화 데이터셋에 address 공백 처리 적용
+        setFormData({ name: '', phone: '', address: '', type: '공장 지붕 / 건물 옥상', content: '' });
+        setPrivacyAgreed(false);
+
+        // 메타 픽셀 추적 및 효과를 위한 0.5초 딜레이 후 thank-you 페이지 이동
+        setTimeout(() => {
+          router.push('/thank-you');
+        }, 500);
+
       } else {
         setStatus('error');
       }
@@ -104,7 +126,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 비즈니스 협력사 무한 롤링 배너 (모바일 겹침 억까 완전 해결 버젼) */}
+      {/* 비즈니스 협력사 무한 롤링 배너 */}
       <section className="bg-white border-b border-slate-200 py-8 overflow-hidden select-none">
         <div className="max-w-7xl mx-auto px-6 mb-3">
           <p className="text-center text-xs font-bold text-slate-400 tracking-wider uppercase">
@@ -112,10 +134,8 @@ export default function Home() {
           </p>
         </div>
         
-        {/* 무한 전광판 기차 트랙 컨테이너 */}
         <div style={marqueeStyles.marqueeContainer}>
           <div style={marqueeStyles.marqueeTrack}>
-            {/* 원본 세트 */}
             <span style={marqueeStyles.marqueeItem}>한화솔루션</span>
             <span style={marqueeStyles.marqueeItem}>SK E&S</span>
             <span style={marqueeStyles.marqueeItem}>엔라이튼</span>
@@ -123,7 +143,6 @@ export default function Home() {
             <span style={marqueeStyles.marqueeItem}>H에너지</span>
             <span style={marqueeStyles.marqueeItem}>CNCITY ENERGY</span>
             
-            {/* 자연스러운 무한 루프용 복사본 세트 */}
             <span style={marqueeStyles.marqueeItem}>한화솔루션</span>
             <span style={marqueeStyles.marqueeItem}>SK E&S</span>
             <span style={marqueeStyles.marqueeItem}>엔라이튼</span>
@@ -133,7 +152,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* CSS 키프레임 애니메이션 주입 */}
         <style dangerouslySetInnerHTML={{__html: `
           @keyframes globalMarquee {
             0% { transform: translateX(0); }
@@ -207,7 +225,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-6 max-w-xl mx-auto">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-10">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-2"> 무료 컨설팅 신청</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">무료 컨설팅 신청</h2>
             <p className="text-sm text-slate-500">정보를 남겨주시면 전담 컨설턴트가 직접 확인 후 연락드립니다.</p>
           </div>
           
@@ -220,6 +238,20 @@ export default function Home() {
               <label className="block text-xs font-bold text-slate-700 tracking-wider uppercase mb-2">연락처</label>
               <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" placeholder="010-0000-0000" />
             </div>
+            
+            {/* ✅ 3. 문법 오류 없이 깔끔하게 반영된 '부지 주소' 직접 입력창 구역 */}
+            <div>
+              <label className="block text-xs font-bold text-slate-700 tracking-wider uppercase mb-2">부지 주소</label>
+              <input 
+                type="text" 
+                required 
+                value={formData.address} 
+                onChange={(e) => setFormData({...formData, address: e.target.value})} 
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" 
+                placeholder="예시: 대구 서구 서대구로 20 또는 달성군 읍·면" 
+              />
+            </div>
+
             <div>
               <label className="block text-xs font-bold text-slate-700 tracking-wider uppercase mb-2">부지 형태</label>
               <select value={formData.type} onChange={(e) => setFormData({...formData, type: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-600">
@@ -231,10 +263,32 @@ export default function Home() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-700 tracking-wider uppercase mb-2">문의 내용 또는 부지 주소</label>
-              <textarea rows={3} value={formData.content} onChange={(e) => setFormData({...formData, content: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" placeholder="상담받으실 부지 주소를 적어주시면 더 정확한 분석이 가능합니다."></textarea>
+              <label className="block text-xs font-bold text-slate-700 tracking-wider uppercase mb-2">문의 내용</label>
+              <textarea rows={3} value={formData.content} onChange={(e) => setFormData({...formData, content: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" placeholder="상담받으실 세부 내용을 적어주시면 더 정확한 분석이 가능합니다."></textarea>
             </div>
             
+            {/* 당근마켓 검수 필수: 개인정보 수집 동의 체크박스 */}
+            <div className="flex items-start gap-2 pt-1">
+              <input 
+                type="checkbox" 
+                id="privacy_agree" 
+                checked={privacyAgreed}
+                onChange={(e) => setPrivacyAgreed(e.target.checked)}
+                className="mt-1 h-4 w-4 accent-emerald-600 cursor-pointer rounded"
+                required 
+              />
+              <label htmlFor="privacy_agree" className="text-xs text-slate-500 leading-tight cursor-pointer select-none">
+                <span className="text-red-500 font-bold">[필수]</span> 개인정보 수집 및 이용에 동의합니다.{' '}
+                <button 
+                  type="button"
+                  onClick={() => setIsPrivacyModalOpen(true)}
+                  className="text-slate-700 underline font-semibold hover:text-slate-900 ml-1"
+                >
+                  [자세히 보기]
+                </button>
+              </label>
+            </div>
+
             <button type="submit" disabled={status === 'sending'} className="w-full bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-300 text-white font-bold py-4 rounded-xl shadow-md transition-colors text-sm mt-2">
               {status === 'sending' ? '신청서 전송 중...' : '무료 컨설팅 신청하기'}
             </button>
@@ -245,19 +299,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 푸터 */}
-      <footer className="bg-slate-950 text-slate-500 text-center py-8 text-xs border-t border-slate-900">
-        <p>KS에너지 대구지사 | 비즈니스 문의 전용 랜딩페이지</p>
-        <p className="mt-1 text-slate-600">주소: 대구 서구 서대구로20 26층 3호</p>
+      {/* 개인정보 동의 상세 모달 팝업 */}
+      {isPrivacyModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white border border-slate-200 text-slate-700 max-w-sm w-full p-6 rounded-2xl shadow-2xl space-y-4">
+            <h4 className="text-base font-bold text-slate-900 border-b border-slate-100 pb-2">
+              개인정보 수집 및 이용 동의
+            </h4>
+            <div className="text-xs space-y-2.5 leading-relaxed text-slate-600">
+              <p><strong>1. 수집권자 :</strong> 노네임(No Name)</p>
+              <p><strong>2. 수집 목적 :</strong> 지붕 임대 및 지원 사업 관련 상담, 안내 문자/전화 발송</p>
+              {/* 수집항목에 주소 명시 매칭 완료 */}
+              <p><strong>3. 수집 항목 :</strong> 이름, 연락처, 부지 주소, 부지 형태, 문의 내용</p> 
+              <p><strong>4. 보유 및 이용기간 :</strong> 수집 후 1년 (고객 요청 시 즉시 파기)</p>
+              <p className="text-[11px] text-slate-400 pt-1 border-t border-slate-100">
+                ※ 귀하는 동의를 거부할 권리가 있으나, 거부 시 상담 서비스 이용이 제한될 수 있습니다.
+              </p>
+            </div>
+            <button 
+              type="button"
+              onClick={() => setIsPrivacyModalOpen(false)}
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-xl transition text-sm"
+            >
+              닫기
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* 🛠️ 수정 요청하신 최종 푸터 영역 */}
+      <footer className="bg-slate-950 text-slate-500 text-center py-10 text-xs border-t border-slate-900 space-y-2">
+        <p className="font-semibold text-slate-400">KS에너지 대구지사 | 비즈니스 문의 전용 랜딩페이지</p>
+        
+        {/* 당근 검수용 핵심 정보 세트 완료 */}
+        <div className="text-slate-600 max-w-md mx-auto leading-relaxed">
+          <p>상호명(사업자명): 노네임(Noname) | 대표자: 이정현</p>
+          <p>사업자등록번호: 635-67-00527</p>
+          <p>주소: 대구 북구 동북로291 901-a97</p>
+        </div>
+        
+        <p className="text-[10px] text-slate-700 pt-2">© Noname. All rights reserved.</p>
       </footer>
 
-      {/* 5. [수정 완료] 최하단 마감 전에 팝업 컴포넌트를 얹어주고 연결선을 장착합니다! */}
+      {/* 5. 최하단 마감 전에 팝업 컴포넌트 */}
       <RealtimePopup ref={popupRef} />
     </div>
   );
 }
 
-// 모바일 롤링 전광판 전용 보완 인라인 스타일 오브젝트
 const marqueeStyles = {
   marqueeContainer: {
     display: 'flex',
