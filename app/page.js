@@ -116,11 +116,11 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-slate-800/50 border border-slate-700/50 p-6 rounded-xl text-center">
               <p className="text-xs text-slate-400 font-medium">공공기관 레퍼런스</p>
-              <p className="text-lg font-black text-white mt-1">서울시중구시설관리공단 에너지 절감 성과 실현</p>
+              <p className="text-lg font-black text-white mt-1">서울시중구시설관리공단 에너지 절감 성과 실현 외 다수</p>
             </div>
             <div className="bg-slate-800/50 border border-slate-700/50 p-6 rounded-xl text-center">
               <p className="text-xs text-slate-400 font-medium">최고급 호텔 레퍼런스</p>
-              <p className="text-lg font-black text-white mt-1">시그니엘 서울 빌딩과 호텔 모두 절감 성과</p>
+              <p className="text-lg font-black text-white mt-1">시그니엘 서울 빌딩과 호텔 모두 절감 성과 외 다수</p>
             </div>
           </div>
         </div>
@@ -248,7 +248,7 @@ export default function Home() {
                 value={formData.address} 
                 onChange={(e) => setFormData({...formData, address: e.target.value})} 
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" 
-                placeholder="예시: 대구 서구 서대구로 20 또는 달성군 읍·면" 
+                placeholder="예시: 경북 포항시, 경북 안동시 (상세주소는 하단에 부탁드립니다.)" 
               />
             </div>
 
