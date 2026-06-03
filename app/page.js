@@ -264,7 +264,7 @@ export default function Home() {
             </div>
             <div>
               <label className="block text-xs font-bold text-slate-700 tracking-wider uppercase mb-2">문의 내용</label>
-              <textarea rows={3} value={formData.content} onChange={(e) => setFormData({...formData, content: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" placeholder="상담받으실 세부 내용을 적어주시면 더 정확한 분석이 가능합니다."></textarea>
+              <textarea rows={3} value={formData.content} onChange={(e) => setFormData({...formData, content: e.target.value})} className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm text-slate-900" placeholder="건물평수 등 상담받으실 세부 내용을 적어주시면 더 정확한 분석이 가능합니다."></textarea>
             </div>
             
             {/* 당근마켓 검수 필수: 개인정보 수집 동의 체크박스 */}
