@@ -92,8 +92,8 @@ export default function Home() {
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
             사용하지 않는 공장·창고 지붕, <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-              매달 따박따박 나오는 수익
-            </span>이 될 수 있습니다
+              따박따박 나오는 수익이
+            </span>될 수 있습니다
           </h1>
           <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
             대구·경북 지역 공장 및 창고 지붕에 설치비 부담 없이 추가 수익이 가능한지 확인해 보세요.
