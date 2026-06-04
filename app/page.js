@@ -14,7 +14,7 @@ export default function Home() {
     phone: '',
     address: '', 
     type: '공장 지붕 / 건물 옥상',
-    content: '메타/당근 광고 유입 최적화 버전을 통한 빠른 3초 사업성 진단 요청'
+    content: '실데이터 최적화 버전을 통한 빠른 3초 사업성 진단 요청'
   });
   const [status, setStatus] = useState('');
   
@@ -50,7 +50,7 @@ export default function Home() {
           phone: '', 
           address: '', 
           type: '공장 지붕 / 건물 옥상', 
-          content: '메타/당근 광고 유입 최적화 버전을 통한 빠른 3초 사업성 진단 요청' 
+          content: '실데이터 최적화 버전을 통한 빠른 3초 사업성 진단 요청' 
         });
         setPrivacyAgreed(false);
 
@@ -82,13 +82,13 @@ export default function Home() {
         </div>
       </header>
 
-      {/* 🔥 [대폭 변경] 1. 히어로 섹션 + 상단 고전환 폼 배치 (Hero Form Layout) */}
+      {/* 1. 히어로 섹션 + 상단 고전환 폼 배치 */}
       <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 text-white py-16 px-4 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.12),transparent_50%)]" />
         
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
           
-          {/* 가치 제안 (PC 기준 왼쪽 7칸) */}
+          {/* 가치 제안 (왼쪽 7칸) */}
           <div className="lg:col-span-7 text-center lg:text-left">
             <span className="inline-block bg-red-500 text-white text-xs font-extrabold tracking-wider px-3 py-1 rounded mb-4 animate-pulse">
               🚨 대구·경북 지역 선착순 20개소 우선 분석 (14개 완료)
@@ -96,17 +96,46 @@ export default function Home() {
             <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight text-white">
               사용하지 않는 공장·창고 지붕,<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
-                매달 나오는 추가 수익
+                든든한 추가 수익
               </span>이 됩니다
             </h1>
             
-            {/* 눈에 보이는 확고한 숫자 박스 */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-6 inline-block text-left w-full max-w-xl">
-              <p className="text-xs text-emerald-400 font-bold uppercase tracking-wider mb-1">대구·경북 평균 시뮬레이션 지표</p>
-              <p className="text-xl md:text-2xl font-bold text-white leading-snug">
-                공장 지붕 <span className="text-yellow-400 underline decoration-2">500평 기준</span><br className="sm:hidden" /> 연간 예상 수익 <span className="text-emerald-400 font-black">2,000만 원 ~ 5,000만 원</span>
+            {/* 🔥 [변경] 실제 대구지사 정산 데이터를 기반으로 한 숫자 박스 (모바일 자동 줄바꿈 최적화) */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 mb-8 inline-block text-left w-full max-w-xl">
+              <p className="text-[11px] md:text-xs text-emerald-400 font-bold uppercase tracking-wider mb-2 text-center lg:text-left">
+                ⚡️ 대구·경북 실제 시뮬레이션 지표
               </p>
-              <p className="text-[11px] text-slate-400 mt-2">* 구조물 상태, 한전 계통 연계 용량 조건에 따라 상이</p>
+              <div className="text-center lg:text-left space-y-1">
+                <p className="text-sm md:text-base text-slate-300 font-medium">
+                  공장·창고 지붕 <span className="text-yellow-400 font-bold underline decoration-2">500평 (약150kW)</span> 기준
+                </p>
+                <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">
+                  7년 선납 기준 <span className="block sm:inline-block text-emerald-400 text-2xl md:text-4xl font-black mt-1 sm:mt-0 tracking-tight">최대 6,225만 원 일시 지급</span>
+                </h3>
+              </div>
+              <p className="text-[10px] md:text-[11px] text-slate-400 mt-3 text-center lg:text-left">
+                * 임대 조건 및 참여 파트너사 기준이며, 건물 조건에 따라 상이할 수 있습니다.
+              </p>
+            </div>
+
+            {/* 메인 CTA 버튼 및 하단 '나중에 해야지' 방지 특급 장치 */}
+            <div className="mb-8">
+              <a href="#diagnostic-form" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 w-full sm:w-auto">
+                내 건물 예상 수익 무료 분석받기
+              </a>
+
+              {/* 🔥 [친구분 추가 피드백 적용] 버튼 바로 밑 고전환 유도 장치 */}
+              <div className="mt-4 max-w-md mx-auto lg:mx-0 text-left bg-slate-900/60 p-4 rounded-xl border border-white/10">
+                <p className="text-emerald-400 font-extrabold text-xs md:text-sm mb-2 flex items-center gap-1.5 justify-center lg:justify-start">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping"></span>
+                  📍 현재 대구·경북 사업장 우선 검토 중
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 text-slate-300 text-xs font-medium text-center lg:text-left">
+                  <p className="bg-white/5 py-1 px-2 rounded">✓ 설치비 부담 없이 검토 가능</p>
+                  <p className="bg-white/5 py-1 px-2 rounded">✓ 지붕 임대 가능 여부 확인</p>
+                  <p className="bg-white/5 py-1 px-2 rounded">✓ 예상 수익 무료 분석</p>
+                </div>
+              </div>
             </div>
 
             <div className="hidden lg:block text-slate-400 text-xs space-y-1">
@@ -115,7 +144,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 게으른 유저를 위한 첫 화면 폼 (PC 기준 오른쪽 5칸, 모바일은 바로 노출) */}
+          {/* 첫 화면 우측 고전환 폼 */}
           <div id="diagnostic-form" className="lg:col-span-5 w-full max-w-md mx-auto">
             <div className="bg-white text-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100">
               <div className="text-center mb-5">
@@ -129,7 +158,7 @@ export default function Home() {
                   <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm font-medium" placeholder="예: 홍길동 (또는 OO정밀)" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">연락처</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">連絡處 (연락처)</label>
                   <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm font-medium" placeholder="예: 010-0000-0000" />
                 </div>
                 <div>
@@ -137,7 +166,6 @@ export default function Home() {
                   <input type="text" required value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm font-medium" placeholder="번지수까지 기재 시 가장 정확합니다." />
                 </div>
 
-                {/* 약관 동의 */}
                 <div className="flex items-start gap-2 pt-1">
                   <input type="checkbox" id="privacy_agree" checked={privacyAgreed} onChange={(e) => setPrivacyAgreed(e.target.checked)} className="mt-0.5 h-4 w-4 accent-emerald-600 cursor-pointer rounded" required />
                   <label htmlFor="privacy_agree" className="text-[11px] text-slate-500 leading-tight cursor-pointer select-none">
@@ -150,7 +178,7 @@ export default function Home() {
                   {status === 'sending' ? '분석 요청 중...' : '내 건물 예상 수익 확인하기'}
                 </button>
 
-                {status === 'success' && <p className="text-center text-xs font-bold text-emerald-600 mt-2">✨ 진단 요청 완료! 24시간 내 분석 리포트와 함께 연락드리겠습니다.</p>}
+                {status === 'success' && <p className="text-center text-xs font-bold text-emerald-600 mt-2">✨ 진단 요청 완료! 24시간 내 리포트를 들고 연락드리겠습니다.</p>}
                 {status === 'error' && <p className="text-center text-xs font-bold text-red-500 mt-2">❌ 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.</p>}
               </form>
             </div>
@@ -186,33 +214,43 @@ export default function Home() {
       {/* 3. 실제 수익 예시 섹션 */}
       <section className="bg-white py-20 px-6 border-y border-slate-100">
         <div className="max-w-xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">지붕 규모별 예상 발전 수익</h2>
-          <p className="text-slate-500 text-sm text-center mb-10">대구·경북권 지붕 면적에 따라 기대할 수 있는 연간 수익 지표입니다.</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">지붕 규모별 파트너사 정산 예시</h2>
+          <p className="text-slate-500 text-sm text-center mb-10">실제 대구·경북 지사의 주요 파트너사별 선납 조건 및 정산 지표입니다.</p>
           
           <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
             <table className="w-full text-center border-collapse">
               <thead>
                 <tr className="bg-slate-900 text-white text-xs md:text-sm">
-                  <th className="py-3.5 px-4 font-semibold">건물 유형</th>
+                  <th className="py-3.5 px-4 font-semibold">참여 파트너사</th>
                   <th className="py-3.5 px-4 font-semibold">설치 규모</th>
-                  <th className="py-3.5 px-4 font-semibold text-emerald-400">예상 연간 수익</th>
+                  <th className="py-3.5 px-4 font-semibold">선납/지급 조건</th>
+                  <th className="py-3.5 px-4 font-semibold text-emerald-400">실제 지급(예상)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-sm md:text-base">
+              <tbody className="divide-y divide-slate-100 text-xs md:text-sm">
                 <tr className="hover:bg-slate-50/50">
-                  <td className="py-4 px-4 font-medium text-slate-700">중소형 공장 지붕</td>
-                  <td className="py-4 px-4 text-slate-500">300kW</td>
-                  <td className="py-4 px-4 font-bold text-emerald-600">연 3,000만 원 ~</td>
+                  <td className="py-4 px-4 font-bold text-slate-700">CNCITY 에너지</td>
+                  <td className="py-4 px-4 text-slate-500">150kW (약 500평)</td>
+                  <td className="py-4 px-4 text-slate-500">7년 선납 (kW당 45,000)</td>
+                  <td className="py-4 px-4 font-black text-emerald-600">4,725만 원</td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="py-4 px-4 font-medium text-slate-700">중대형 물류창고</td>
-                  <td className="py-4 px-4 text-slate-500">500kW</td>
-                  <td className="py-4 px-4 font-bold text-emerald-600">연 5,000만 원 ~</td>
+                  <td className="py-4 px-4 font-bold text-slate-700">마디미 에너지</td>
+                  <td className="py-4 px-4 text-slate-500">100kW (약 330평)</td>
+                  <td className="py-4 px-4 text-slate-500">5년 선납 (kW당 35,000)</td>
+                  <td className="py-4 px-4 font-black text-emerald-600">1,799만 원</td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
-                  <td className="py-4 px-4 font-medium text-slate-700">대기업 대형 공장</td>
-                  <td className="py-4 px-4 text-slate-500">1MW (1,000kW)</td>
-                  <td className="py-4 px-4 font-bold text-emerald-600">연 1억 원 ~</td>
+                  <td className="py-4 px-4 font-bold text-slate-700">H ENERGY</td>
+                  <td className="py-4 px-4 text-slate-500">100kW (약 330평)</td>
+                  <td className="py-4 px-4 text-slate-500">5년 선납 (kW당 35,000)</td>
+                  <td className="py-4 px-4 font-black text-emerald-600">1,785만 원</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-4 px-4 font-bold text-slate-700">CTR 에너지</td>
+                  <td className="py-4 px-4 text-slate-500">100kW (약 330평)</td>
+                  <td className="py-4 px-4 text-slate-500">5년 선납 (kW당 35,000)</td>
+                  <td className="py-4 px-4 font-black text-emerald-600">1,785만 원</td>
                 </tr>
               </tbody>
             </table>
@@ -231,7 +269,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. 본사 핵심 실적 배너 (사회적 증거 & 신뢰 요소) */}
+      {/* 5. 본사 핵심 실적 배너 */}
       <section className="bg-white py-20 px-6 border-b border-slate-100">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -264,11 +302,11 @@ export default function Home() {
               <p className="text-slate-600 text-sm pl-6 leading-relaxed">네, 조건에 따라 제3자 투자 모델이나 금융 모델을 결합하여 사업주 자부담 0원으로 지붕 임대 사업이나 리스 사업 진행이 가능합니다.</p>
             </div>
             <div className="border-b border-slate-100 pb-4">
-              <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span class="text-emerald-600 mr-2">Q.</span> 지붕이 노후되었는데도 설치할 수 있나요?</h3>
+              <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span className="text-emerald-600 mr-2">Q.</span> 지붕이 노후되었는데도 설치할 수 있나요?</h3>
               <p className="text-slate-600 text-sm pl-6 leading-relaxed">구조 정밀 진단 검토를 먼저 선행합니다. 보강 공사 가능 여부와 지붕 보수 작업을 동반한 하이브리드 솔루션을 무상 제안해 드립니다.</p>
             </div>
             <div>
-              <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span class="text-emerald-600 mr-2">Q.</span> 검토나 사업성 분석 후 시공 계약을 강제하나요?</h3>
+              <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span className="text-emerald-600 mr-2">Q.</span> 검토나 사업성 분석 후 시공 계약을 강제하나요?</h3>
               <p className="text-slate-600 text-sm pl-6 leading-relaxed">아닙니다. 1차 분석 리포트는 전액 무상 제공되며, 검토 결과를 보신 후 진행 여부는 대표님이 자율적으로 선택하십니다.</p>
             </div>
           </div>
