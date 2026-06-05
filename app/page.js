@@ -91,7 +91,7 @@ export default function Home() {
           {/* 가치 제안 (왼쪽 7칸) */}
           <div className="lg:col-span-7 text-center lg:text-left">
             <span className="inline-block bg-red-500 text-white text-xs font-extrabold tracking-wider px-3 py-1 rounded mb-4 animate-pulse">
-              🚨 대구·경북 지역 선착순 20개소 우선 분석 (14개 완료)
+              🚨 경상권 선착순 40개소 우선 분석 (22개소 분석 완료)
             </span>
             <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight text-white">
               사용하지 않는 공장·창고 지붕,<br />
@@ -128,7 +128,7 @@ export default function Home() {
               <div className="mt-4 max-w-md mx-auto lg:mx-0 text-left bg-slate-900/60 p-4 rounded-xl border border-white/10">
                 <p className="text-emerald-400 font-extrabold text-xs md:text-sm mb-2 flex items-center gap-1.5 justify-center lg:justify-start">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping"></span>
-                  📍 현재 대구·경북 사업장 우선 검토 중
+                  📍 현재 경상권 사업장 우선 검토 중
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 text-slate-300 text-xs font-medium text-center lg:text-left">
                   <p className="bg-white/5 py-1 px-2 rounded">✓ 설치비 부담 없이 검토 가능</p>
@@ -139,8 +139,8 @@ export default function Home() {
             </div>
 
             <div className="hidden lg:block text-slate-400 text-xs space-y-1">
-              <p>• 누적 분석 검토 건수 : 대구·경북 지역 127건 돌파</p>
-              <p>• 주소 정보는 위성 도면 분석 및 선로 용량 조회에만 활용됩니다.</p>
+              <p>• 누적 분석 검토 건수 : 경상권 지역 189건 돌파</p>
+              <p>• 주소 정보는 위성 도면 분석 및 한전 연계 선로 용량 조회에만 활용됩니다.</p>
             </div>
           </div>
 
@@ -215,7 +215,7 @@ export default function Home() {
       <section className="bg-white py-20 px-6 border-y border-slate-100">
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">지붕 규모별 파트너사 정산 예시</h2>
-          <p className="text-slate-500 text-sm text-center mb-10">실제 대구·경북 지사의 주요 파트너사별 선납 조건 및 정산 지표입니다.</p>
+          <p className="text-slate-500 text-sm text-center mb-10">실제 대구지사의 주요 파트너사별 선납 조건 및 정산 지표입니다.(프로모션은 별도)</p>
           
           <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
             <table className="w-full text-center border-collapse">
@@ -230,26 +230,26 @@ export default function Home() {
               <tbody className="divide-y divide-slate-100 text-xs md:text-sm">
                 <tr className="hover:bg-slate-50/50">
                   <td className="py-4 px-4 font-bold text-slate-700">CNCITY 에너지</td>
-                  <td className="py-4 px-4 text-slate-500">150kW (약 500평)</td>
-                  <td className="py-4 px-4 text-slate-500">7년 선납 (kW당 45,000)</td>
+                  <td className="py-4 px-4 text-slate-500">150kW </td>
+                  <td className="py-4 px-4 text-slate-500">최대 7년 선납 </td>
                   <td className="py-4 px-4 font-black text-emerald-600">4,725만 원</td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
                   <td className="py-4 px-4 font-bold text-slate-700">마디미 에너지</td>
-                  <td className="py-4 px-4 text-slate-500">100kW (약 330평)</td>
-                  <td className="py-4 px-4 text-slate-500">5년 선납 (kW당 35,000)</td>
+                  <td className="py-4 px-4 text-slate-500">100kW</td>
+                  <td className="py-4 px-4 text-slate-500">5년 선납</td>
                   <td className="py-4 px-4 font-black text-emerald-600">1,799만 원</td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
                   <td className="py-4 px-4 font-bold text-slate-700">H ENERGY</td>
-                  <td className="py-4 px-4 text-slate-500">100kW (약 330평)</td>
-                  <td className="py-4 px-4 text-slate-500">5년 선납 (kW당 35,000)</td>
+                  <td className="py-4 px-4 text-slate-500">100kW</td>
+                  <td className="py-4 px-4 text-slate-500">5년 선납</td>
                   <td className="py-4 px-4 font-black text-emerald-600">1,785만 원</td>
                 </tr>
                 <tr className="hover:bg-slate-50/50">
                   <td className="py-4 px-4 font-bold text-slate-700">CTR 에너지</td>
-                  <td className="py-4 px-4 text-slate-500">100kW (약 330평)</td>
-                  <td className="py-4 px-4 text-slate-500">5년 선납 (kW당 35,000)</td>
+                  <td className="py-4 px-4 text-slate-500">100kW</td>
+                  <td className="py-4 px-4 text-slate-500">5년 선납</td>
                   <td className="py-4 px-4 font-black text-emerald-600">1,785만 원</td>
                 </tr>
               </tbody>
@@ -263,7 +263,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto">
           <h2 className="text-xl md:text-2xl font-bold text-white mb-4">왜 무료로 분석해 드릴까요? 🤔</h2>
           <p className="text-slate-400 leading-relaxed text-sm md:text-base max-w-lg mx-auto">
-            "대구·경북 지역 태양광 프로젝트 확대를 위해,<br />
+            "경상권 태양광 프로젝트 확대를 위해,<br />
             <strong className="text-emerald-400">사업성이 확인된 우수 지붕 부지를 우선적으로 발굴하고 검토</strong>하고 있기 때문입니다. 선착순 티오 내에서 부담 없이 자산 가치를 확인해 보세요."
           </p>
         </div>
