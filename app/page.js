@@ -201,7 +201,7 @@ export default function Home() {
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
             <span className="text-4xl mb-3">🏢</span>
             <h3 className="font-bold text-lg mb-1">물류 및 유통 창고</h3>
-            <p className="text-slate-500 text-xs text-center leading-relaxed">넓은 지붕 면적을 활용한 대규모 안정적 지붕 임대료 수령</p>
+            <p className="text-slate-500 text-xs text-center leading-relaxed">넓은 지붕 면적을 활용한 대규모 안정적 지붕 임대료 수령가능</p>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
             <span className="text-4xl mb-3">🏬</span>
