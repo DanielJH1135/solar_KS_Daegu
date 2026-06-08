@@ -101,7 +101,7 @@ export default function RpsHome() {
         setFormData({ 
           name: '', phone: '', address: '', 
           type: '상가·원룸 옥상 (RPS 자가용)', 
-          content: 'RPS 소규모 자가용 최저 단가 비교 및 진단 요청 (최소 50평 기준)' 
+          content: 'RPS 소규모 자가용 최저 단가 비교 및 진단 요청 (최소 4~50평 기준)' 
         });
         setPrivacyAgreed(false);
         setQuoteRoute('select');
@@ -125,7 +125,7 @@ export default function RpsHome() {
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="font-black text-xl tracking-tight text-slate-900">KS에너지</span>
-            <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded">대구 자가용 전문</span>
+            <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-0.5 rounded">대구지사 빌딩RPS 팀</span>
           </div>
           <a href="#diagnostic-form" className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors">
             무료 비교견적 받기
@@ -140,7 +140,7 @@ export default function RpsHome() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
           <div className="lg:col-span-7 text-center lg:text-left">
             <span className="inline-block bg-emerald-600 text-white text-xs font-extrabold tracking-wider px-3 py-1 rounded mb-4">
-              📢 상가·원룸·꼬마빌딩 옥상 전문 (50평 이상 대상)
+              📢 상가·원룸·빌딩 옥상 전문 (40~50평 이상 대상)
             </span>
             <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight text-white reveal-up">
               상가 관리비 절감,<br />
@@ -163,7 +163,7 @@ export default function RpsHome() {
                   <div className="space-y-3">
                     <button type="button" onClick={() => handleRouteSelect('yes')} className="w-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold py-4 px-6 rounded-2xl transition text-sm flex flex-col items-center justify-center gap-1">
                       <span className="text-base">🙋‍♂️ 네, 이미 받아본 견적이 있습니다</span>
-                      <span className="text-[11px] text-emerald-600 font-normal">받으신 견적서의 거품/마진을 무료로 분석해 드립니다</span>
+                      <span className="text-[11px] text-emerald-600 font-normal">받으신 견적서와 비교해보세요 무료로 분석해 드립니다</span>
                     </button>
                     <button type="button" onClick={() => handleRouteSelect('no')} className="w-full bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 font-bold py-4 px-6 rounded-2xl transition text-sm flex flex-col items-center justify-center gap-1">
                       <span className="text-base">🙅‍♂️ 아니오, 처음 알아보는 중입니다</span>
@@ -177,7 +177,7 @@ export default function RpsHome() {
                 <form className="space-y-4" onSubmit={handleSubmit}>
                   <div className="flex justify-between items-center mb-2">
                     <h2 className="text-lg font-black text-slate-900 tracking-tight">
-                      {quoteRoute === 'yes' ? '📊 기존 견적 거품 교체 분석' : '📋 맞춤형 예상 단가 조회'}
+                      {quoteRoute === 'yes' ? '📊 기존 견적 비교 분석' : '📋 맞춤형 예상 단가 조회'}
                     </h2>
                     <button type="button" onClick={() => setQuoteRoute('select')} className="text-slate-400 hover:text-slate-600 text-xs">← 다시 선택</button>
                   </div>
@@ -194,7 +194,7 @@ export default function RpsHome() {
                     <input type="text" required value={formData.address} onChange={(e) => setFormData({...formData, address: e.target.value})} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm font-medium" placeholder="번지수까지 기재 시 정확한 분석 가능" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">예상 옥상 평수 (최소 50평부터 진행 가능)</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">예상 옥상 평수 (최소 40평부터 진행 가능)</label>
                     <input 
                       type="text" 
                       required
@@ -251,7 +251,7 @@ export default function RpsHome() {
               </thead>
               <tbody className="divide-y divide-slate-100 text-xs">
                 <tr className="hover:bg-slate-50/50">
-                  <td className="py-4 px-4 font-bold text-slate-700">약 50평 ~ 60평</td>
+                  <td className="py-4 px-4 font-bold text-slate-700">약 40평 ~ 60평</td>
                   <td className="py-4 px-4 text-emerald-600 font-bold">20kW 기본형</td>
                   <td className="py-4 px-4 text-slate-800 text-left pl-4">🏢 일반 원룸 · 상가건물 공용 전기세 바닥으로 다운</td>
                 </tr>

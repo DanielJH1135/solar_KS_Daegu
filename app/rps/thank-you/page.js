@@ -74,7 +74,7 @@ export default function RpsThankYouPage() {
           </li>
           <li style={{ fontSize: '13px', color: '#334155', display: 'flex', alignItems: 'flex-start', lineHeight: '1.5' }}>
             <span style={{ color: '#10b981', marginRight: '8px', fontWeight: 'bold' }}>✓</span>
-            <div><strong>맞춤형 리포트 :</strong> 기존 견적서 대비 직영 최저 단가 비교 및 예상 전기세 절감액 시뮬레이션을 24시간 이내에 정리해 연락드립니다.</div>
+            <div><strong>맞춤형 리포트 :</strong> 기존 견적서 대비 직영 최저 단가 비교 및 예상 전기세 절감액 시뮬레이션을 정리해 연락드립니다.</div>
           </li>
         </ul>
       </div>
