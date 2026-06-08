@@ -1,34 +1,12 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react'; // ✅ useEffect 추가
+import React, { useState, useRef } from 'react';
 import RealtimePopup from '../components/RealtimePopup';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const popupRef = useRef(null);
   const router = useRouter();
-
-  // ✅ [모바일/PC 전원 작동] 리액트 생명주기에 맞춘 강력한 스크롤 리빌 효과
-  useEffect(() => {
-    const reveals = document.querySelectorAll('.reveal-up');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target); // 한 번 뜨면 감지 해제 (성능 최적화)
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: '0px 0px -10% 0px', // 모바일 화면 하단 타이트한 규격에 맞춰 수정
-      threshold: 0.05 // 요동치는 모바일 스크롤 특성상 5%만 보여도 바로 통통 튀게 설정
-    });
-
-    reveals.forEach((el) => observer.observe(el));
-    
-    return () => observer.disconnect(); // 컴포넌트 언마운트 시 클린업
-  }, []);
 
   // ✅ 백엔드 API 연동용 데이터 포맷 완벽 유지
   const [formData, setFormData] = useState({
@@ -115,6 +93,7 @@ export default function Home() {
             <span className="inline-block bg-red-500 text-white text-xs font-extrabold tracking-wider px-3 py-1 rounded mb-4 animate-pulse">
               🚨 경상권 선착순 40개소 우선 분석 (22개소 분석 완료)
             </span>
+            {/* ✨ 스크롤 리빌 효과 적용 */}
             <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight text-white reveal-up">
               사용하지 않는 공장·창고 지붕,<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
@@ -122,6 +101,7 @@ export default function Home() {
               </span>이 됩니다
             </h1>
             
+            {/* 🔥 실제 대구지사 정산 데이터를 기반으로 한 숫자 박스 (100ms 딜레이 진입) */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 mb-8 inline-block text-left w-full max-w-xl reveal-up delay-100">
               <p className="text-[11px] md:text-xs text-emerald-400 font-bold uppercase tracking-wider mb-2 text-center lg:text-left">
                 ⚡️ 대구·경북 실제 시뮬레이션 지표
@@ -139,6 +119,7 @@ export default function Home() {
               </p>
             </div>
 
+            {/* 메인 CTA 버튼 및 하단 장치 (200ms 딜레이 진입) */}
             <div className="mb-8 reveal-up delay-200">
               <a href="#diagnostic-form" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 w-full sm:w-auto">
                 내 건물 예상 수익 무료 분석받기
@@ -163,7 +144,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 첫 화면 우측 고전환 폼 */}
+          {/* 첫 화면 우측 고전환 폼 (300ms 딜레이 진입) */}
           <div id="diagnostic-form" className="lg:col-span-5 w-full max-w-md mx-auto reveal-up lg:delay-300">
             <div className="bg-white text-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100">
               <div className="text-center mb-5">
@@ -206,7 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. 내 건물도 가능할까요? 섹션 */}
+      {/* 2. 내 건물도 가능할까요? 섹션 (순차 리빌 적용) */}
       <section className="py-20 px-6 max-w-4xl mx-auto text-center reveal-up">
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">내 건물도 진단 대상일까요?</h2>
         <p className="text-slate-500 text-sm md:text-base mb-12">유휴 공간이 있다면 어디든 고정 수입원이 될 수 있습니다.</p>
@@ -356,6 +337,12 @@ export default function Home() {
             <span style={marqueeStyles.marqueeItem}>CNCITY ENERGY</span>
           </div>
         </div>
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes globalMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}} />
       </section>
 
       {/* 개인정보 동의 상세 모달 팝업 */}
@@ -398,7 +385,24 @@ export default function Home() {
 }
 
 const marqueeStyles = {
-  marqueeContainer: { display: 'flex', overflow: 'hidden', width: '100%', position: 'relative', marginTop: '8px' },
-  marqueeTrack: { display: 'flex', width: 'max-content', animation: 'globalMarquee 20s linear infinite' },
-  marqueeItem: { fontSize: '20px', fontWeight: 'bold', color: '#94a3b8', padding: '0 32px', whiteSpace: 'nowrap', display: 'inline-block' }
+  marqueeContainer: {
+    display: 'flex',
+    overflow: 'hidden',
+    width: '100%',
+    position: 'relative',
+    marginTop: '8px',
+  },
+  marqueeTrack: {
+    display: 'flex',
+    width: 'max-content',
+    animation: 'globalMarquee 20s linear infinite',
+  },
+  marqueeItem: {
+    fontSize: '20px',
+    fontWeight: 'bold',
+    color: '#94a3b8', 
+    padding: '0 32px', 
+    whiteSpace: 'nowrap',
+    display: 'inline-block',
+  }
 };
