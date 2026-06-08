@@ -93,15 +93,16 @@ export default function Home() {
             <span className="inline-block bg-red-500 text-white text-xs font-extrabold tracking-wider px-3 py-1 rounded mb-4 animate-pulse">
               🚨 경상권 선착순 40개소 우선 분석 (22개소 분석 완료)
             </span>
-            <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight text-white">
+            {/* ✨ 스크롤 리빌 효과 적용 */}
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-6 leading-tight text-white reveal-up">
               사용하지 않는 공장·창고 지붕,<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
                 든든한 추가 수익
               </span>이 됩니다
             </h1>
             
-            {/* 🔥 [변경] 실제 대구지사 정산 데이터를 기반으로 한 숫자 박스 (모바일 자동 줄바꿈 최적화) */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 mb-8 inline-block text-left w-full max-w-xl">
+            {/* 🔥 실제 대구지사 정산 데이터를 기반으로 한 숫자 박스 (100ms 딜레이 진입) */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 mb-8 inline-block text-left w-full max-w-xl reveal-up delay-100">
               <p className="text-[11px] md:text-xs text-emerald-400 font-bold uppercase tracking-wider mb-2 text-center lg:text-left">
                 ⚡️ 대구·경북 실제 시뮬레이션 지표
               </p>
@@ -118,13 +119,12 @@ export default function Home() {
               </p>
             </div>
 
-            {/* 메인 CTA 버튼 및 하단 '나중에 해야지' 방지 특급 장치 */}
-            <div className="mb-8">
+            {/* 메인 CTA 버튼 및 하단 장치 (200ms 딜레이 진입) */}
+            <div className="mb-8 reveal-up delay-200">
               <a href="#diagnostic-form" className="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-lg shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 w-full sm:w-auto">
                 내 건물 예상 수익 무료 분석받기
               </a>
 
-              {/* 🔥 [친구분 추가 피드백 적용] 버튼 바로 밑 고전환 유도 장치 */}
               <div className="mt-4 max-w-md mx-auto lg:mx-0 text-left bg-slate-900/60 p-4 rounded-xl border border-white/10">
                 <p className="text-emerald-400 font-extrabold text-xs md:text-sm mb-2 flex items-center gap-1.5 justify-center lg:justify-start">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-ping"></span>
@@ -138,14 +138,14 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hidden lg:block text-slate-400 text-xs space-y-1">
+            <div className="hidden lg:block text-slate-400 text-xs space-y-1 reveal-up delay-300">
               <p>• 누적 분석 검토 건수 : 경상권 지역 189건 돌파</p>
               <p>• 주소 정보는 위성 도면 분석 및 한전 연계 선로 용량 조회에만 활용됩니다.</p>
             </div>
           </div>
 
-          {/* 첫 화면 우측 고전환 폼 */}
-          <div id="diagnostic-form" className="lg:col-span-5 w-full max-w-md mx-auto">
+          {/* 첫 화면 우측 고전환 폼 (300ms 딜레이 진입) */}
+          <div id="diagnostic-form" className="lg:col-span-5 w-full max-w-md mx-auto reveal-up lg:delay-300">
             <div className="bg-white text-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100">
               <div className="text-center mb-5">
                 <h2 className="text-xl font-black text-slate-900 tracking-tight">3초 사업성 무료 진단</h2>
@@ -187,23 +187,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. 내 건물도 가능할까요? 섹션 */}
-      <section className="py-20 px-6 max-w-4xl mx-auto text-center">
+      {/* 2. 내 건물도 가능할까요? 섹션 (순차 리빌 적용) */}
+      <section className="py-20 px-6 max-w-4xl mx-auto text-center reveal-up">
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">내 건물도 진단 대상일까요?</h2>
         <p className="text-slate-500 text-sm md:text-base mb-12">유휴 공간이 있다면 어디든 고정 수입원이 될 수 있습니다.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
+          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center reveal-up delay-100">
             <span className="text-4xl mb-3">🏭</span>
             <h3 className="font-bold text-lg mb-1">일반 제조업 공장</h3>
             <p className="text-slate-500 text-xs text-center leading-relaxed">자가소비형을 통한 전기세 절감 또는 발전수익 확보</p>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
+          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center reveal-up delay-200">
             <span className="text-4xl mb-3">🏢</span>
             <h3 className="font-bold text-lg mb-1">물류 및 유통 창고</h3>
             <p className="text-slate-500 text-xs text-center leading-relaxed">넓은 지붕 면적을 활용한 대규모 안정적 지붕 임대료 수령가능</p>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
+          <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center reveal-up delay-300">
             <span className="text-4xl mb-3">🏬</span>
             <h3 className="font-bold text-lg mb-1">상업용 건물 / 옥상</h3>
             <p className="text-slate-500 text-xs text-center leading-relaxed">빌딩, 상가 등 사용하지 않는 옥상 공간 자산화</p>
@@ -212,12 +212,12 @@ export default function Home() {
       </section>
 
       {/* 3. 실제 수익 예시 섹션 */}
-      <section className="bg-white py-20 px-6 border-y border-slate-100">
+      <section className="bg-white py-20 px-6 border-y border-slate-100 reveal-up">
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-2">지붕 규모별 파트너사 정산 예시</h2>
           <p className="text-slate-500 text-sm text-center mb-10">실제 대구지사의 주요 파트너사별 선납 조건 및 정산 지표입니다.(프로모션은 별도)</p>
           
-          <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
+          <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm reveal-up delay-100">
             <table className="w-full text-center border-collapse">
               <thead>
                 <tr className="bg-slate-900 text-white text-xs md:text-sm">
@@ -259,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* 4. 왜 무료로 분석해드릴까요? 섹션 */}
-      <section className="py-16 px-6 bg-slate-900 text-slate-300 text-center">
+      <section className="py-16 px-6 bg-slate-900 text-slate-300 text-center reveal-up">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-xl md:text-2xl font-bold text-white mb-4">왜 무료로 분석해 드릴까요? 🤔</h2>
           <p className="text-slate-400 leading-relaxed text-sm md:text-base max-w-lg mx-auto">
@@ -270,7 +270,7 @@ export default function Home() {
       </section>
 
       {/* 5. 본사 핵심 실적 배너 */}
-      <section className="bg-white py-20 px-6 border-b border-slate-100">
+      <section className="bg-white py-20 px-6 border-b border-slate-100 reveal-up">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
             <span className="text-emerald-600 text-xs font-bold uppercase tracking-wider">Proven Track Record</span>
@@ -279,7 +279,7 @@ export default function Home() {
               국내 최고층 빌딩인 롯데타워와 특급호텔 시그니엘서울의 데이터 기반 전기요금 절감 컨설팅을 성공시킨 기술력 그대로, 대구·경북 발전소 시공을 책임집니다. 신뢰가 생명인 태양광 사업, 대기업이 고른 파트너와 안전하게 시작하세요.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-up delay-100">
             <div className="bg-slate-50 border border-slate-100 p-5 rounded-xl">
               <p className="text-xs text-slate-400 font-medium">공공기관 레퍼런스</p>
               <p className="text-sm font-bold text-slate-800 mt-1">서울시중구시설관리공단 에너지 절감 성과 실현 외 다수</p>
@@ -293,19 +293,19 @@ export default function Home() {
       </section>
 
       {/* 6. 자주 묻는 질문(FAQ) 섹션 */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-20 px-6 reveal-up">
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-10">자주 묻는 질문 (FAQ)</h2>
           <div className="space-y-6">
-            <div className="border-b border-slate-100 pb-4">
+            <div className="border-b border-slate-100 pb-4 reveal-up delay-100">
               <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span className="text-emerald-600 mr-2">Q.</span> 초기 설치비 부담이 정말 없나요?</h3>
               <p className="text-slate-600 text-sm pl-6 leading-relaxed">네, 조건에 따라 제3자 투자 모델이나 금융 모델을 결합하여 사업주 자부담 0원으로 지붕 임대 사업이나 리스 사업 진행이 가능합니다.</p>
             </div>
-            <div className="border-b border-slate-100 pb-4">
+            <div className="border-b border-slate-100 pb-4 reveal-up delay-200">
               <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span className="text-emerald-600 mr-2">Q.</span> 지붕이 노후되었는데도 설치할 수 있나요?</h3>
               <p className="text-slate-600 text-sm pl-6 leading-relaxed">구조 정밀 진단 검토를 먼저 선행합니다. 보강 공사 가능 여부와 지붕 보수 작업을 동반한 하이브리드 솔루션을 무상 제안해 드립니다.</p>
             </div>
-            <div>
+            <div className="reveal-up delay-300">
               <h3 className="font-bold text-base mb-1.5 flex items-start text-slate-900"><span className="text-emerald-600 mr-2">Q.</span> 검토나 사업성 분석 후 시공 계약을 강제하나요?</h3>
               <p className="text-slate-600 text-sm pl-6 leading-relaxed">아닙니다. 1차 분석 리포트는 전액 무상 제공되며, 검토 결과를 보신 후 진행 여부는 대표님이 자율적으로 선택하십니다.</p>
             </div>
