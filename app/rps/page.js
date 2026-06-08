@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import RealtimePopup from '../components/RealtimePopup'; // 경로 탐색기 기준 매칭
+import RealtimePopup from '../../components/RealtimePopup'; // 경로 탐색기 기준 매칭
 import { useRouter } from 'next/navigation';
 
 export default function RpsHome() {
