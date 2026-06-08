@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import RealtimePopup from '../../components/RealtimePopup'; // ✅ 상위 폴더 탈출 경로 오류 완벽 해결
+import RealtimePopup from '../../components/RealtimePopup'; // 상위 폴더 탈출 경로 유지
 import { useRouter } from 'next/navigation';
 
 export default function RpsHome() {
@@ -9,13 +9,12 @@ export default function RpsHome() {
   const router = useRouter();
   const [quoteRoute, setQuoteRoute] = useState('select');
 
-  // ✅ [버그 수정] 모바일/PC 스크롤 애니메이션 엔진 + 협력사 무한 롤링 배너 CSS 강제 주입
+  // 모바일/PC 통합 강제 스크롤 리빌 엔진 + 협력사 무한 롤링 배너 CSS 주입
   useEffect(() => {
     if (!document.getElementById('rps-combined-styles')) {
       const style = document.createElement('style');
       style.id = 'rps-combined-styles';
       style.innerHTML = `
-        /* 스크롤 리빌 애니메이션 */
         .reveal-up {
           opacity: 0 !important;
           transform: translateY(25px) !important;
@@ -26,8 +25,6 @@ export default function RpsHome() {
           opacity: 1 !important;
           transform: translateY(0) !important;
         }
-        
-        /* 협력사 무한 롤링 애니메이션 키프레임 */
         @keyframes rpsMarquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -41,7 +38,6 @@ export default function RpsHome() {
       document.head.appendChild(style);
     }
 
-    // 스크롤 감지 트리거
     const reveals = document.querySelectorAll('.reveal-up');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -60,7 +56,6 @@ export default function RpsHome() {
     return () => observer.disconnect();
   }, [quoteRoute]);
 
-  // ✅ 데이터 포맷 완벽 유지 + 기본 문구 변경
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -112,7 +107,7 @@ export default function RpsHome() {
         setQuoteRoute('select');
 
         setTimeout(() => {
-          router.push('/rps/thank-you'); // ✅ 수정한 경로 주소로 정확히 이동
+          router.push('/rps/thank-you');
         }, 500);
       } else {
         setStatus('error');
@@ -191,7 +186,7 @@ export default function RpsHome() {
                     <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm font-medium" placeholder="예: 홍길동" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">連絡처</label>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">연락처</label>
                     <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:outline-none focus:border-emerald-500 text-sm font-medium" placeholder="예: 010-0000-0000" />
                   </div>
                   <div>
@@ -224,7 +219,7 @@ export default function RpsHome() {
         </div>
       </section>
 
-      {/* 2. 구조적 명분 제공 */}
+      {/* 2. 시공 명분 제공 */}
       <section className="py-16 px-6 max-w-4xl mx-auto text-center reveal-up">
         <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">태양광 설치비, 꼭 비싸야 할 이유는 없습니다</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-8">
@@ -239,7 +234,7 @@ export default function RpsHome() {
         </div>
       </section>
 
-      {/* 3. 회사 기준(최소 50평/20kW) 반영된 맞춤 설계안 표 */}
+      {/* 3. 표준 설계안 표 */}
       <section className="bg-white py-16 px-6 border-y border-slate-100 reveal-up">
         <div className="max-w-xl mx-auto">
           <h2 className="text-2xl font-bold text-slate-900 text-center mb-2">건물 규모별 맞춤 설계안</h2>
@@ -279,7 +274,7 @@ export default function RpsHome() {
         </div>
       </section>
 
-      {/* 4. 본사 레퍼런스 신뢰 지표 */}
+      {/* 4. 신뢰 지표 */}
       <section className="bg-white py-16 px-6 border-b border-slate-100 reveal-up">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -302,7 +297,7 @@ export default function RpsHome() {
         </div>
       </section>
 
-      {/* 🔥 [버그 완벽 수정] 살아 움직이는 비즈니스 협력사 롤링 배너 */}
+      {/* 5. 협력사 롤링 배너 */}
       <section className="bg-slate-100 py-6 overflow-hidden select-none border-y border-slate-200/50">
         <div style={marqueeStyles.marqueeContainer}>
           <div className="animate-marquee-flow">
@@ -313,7 +308,6 @@ export default function RpsHome() {
             <span style={marqueeStyles.marqueeItem}>H에너지</span>
             <span style={marqueeStyles.marqueeItem}>CNCITY ENERGY</span>
             
-            {/* 무한 루프를 위한 복제 라인 */}
             <span style={marqueeStyles.marqueeItem}>한화솔루션</span>
             <span style={marqueeStyles.marqueeItem}>SK E&S</span>
             <span style={marqueeStyles.marqueeItem}>엔라이튼</span>
@@ -324,11 +318,19 @@ export default function RpsHome() {
         </div>
       </section>
 
-      {/* 푸터 */}
-      <footer className="bg-slate-950 text-slate-500 text-center py-10 text-xs border-t border-slate-900">
-        <p>상호명: 노네임(Noname) | 대표자: 이정현 | 사업자번호: 635-67-00527</p>
+      {/* 6. [되살림 완벽 복구] 전문 멀티라인 푸터 영역 */}
+      <footer className="bg-slate-950 text-slate-500 text-center py-10 text-xs border-t border-slate-900 space-y-2">
+        <p className="font-semibold text-slate-400">KS에너지 대구지사 | RPS 자가용 견적 비교 전용 랜딩페이지</p>
+        <div className="text-slate-600 max-w-md mx-auto leading-relaxed">
+          <p>상호명(사업자명): 노네임(Noname) | 대표자: 이정현</p>
+          <p>사업자등록번호: 635-67-00527</p>
+          <p>주소: 대구 북구 동북로291 901-a97</p>
+        </div>
+        <p className="text-[10px] text-slate-700 pt-2">© Noname. All rights reserved.</p>
       </footer>
-      <RealtimePopup ref={popupRef} />
+
+      {/* 🔥 [치명적 버그 수정] type="rps" 명시하여 상가/원룸 알림 강제 주입 */}
+      <RealtimePopup type="rps" ref={popupRef} />
     </div>
   );
 }
