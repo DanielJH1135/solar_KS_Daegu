@@ -2,15 +2,17 @@
 
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 
-// 1. 평상시 무작위로 돌릴 주머니 데이터
+// 🏢 공통 대구·경북 지역 데이터
 const locations = [
   '대구 달서구', '대구 북구', '대구 서구', '대구 동구', '대구 수성구', '대구 달성군',
   '경북 구미', '경북 칠곡', '경북 경산', '경북 왜관', '경북 영천', '경북 포항', '경북 경주'
 ];
 
-const targets = ['** 법인', '** 사장님', '** 대표님', '** 창고', '** 공장', '** 산업','*축산','**ENG', '**CNC', '***정밀'];
-
-const suffixes = [
+// ==========================================
+// 1. [기존] 공장 및 산업체 전용 데이터 부하
+// ==========================================
+const factoryTargets = ['** 법인', '** 사장님', '** 대표님', '** 창고', '** 공장', '** 산업', '*축산', '**ENG', '**CNC', '***정밀'];
+const factorySuffixes = [
   '방금 전 상담 신청 완료!',
   '3분 전 지원사업 문의 완료!',
   '방금 전 부지 검토 신청 완료!',
@@ -19,32 +21,51 @@ const suffixes = [
   '상담 접수 완료'
 ];
 
-const RealtimePopup = forwardRef((props, ref) => {
+// ==========================================
+// 2. [신규] 상가·원룸 자가용(RPS) 전용 데이터 부하
+// ==========================================
+const rpsTargets = ['** 건물주님', '** 원룸 소유주님', '** 상가 사장님', '** 빌딩 대표님', '옥상 소유주님', '** 상가주택 사장님', '** 관리인님', '***빌딩 관리단 대표님', '****원룸 소유주님'];
+const rpsSuffixes = [
+  '방금 전 타사 비교견적 검토 요청 완료!',
+  '2분 전 옥상 맞춤형 첫 견적 문의 완료!',
+  '3분 전 상가 전기세 절감 견적 신청!',
+  '방금 전 직영 단가 비교 접수!',
+  '1분 전 원룸 공용 관리비 진단 요청!',
+  '실시간 직영 단가 비교 신청 완료!',
+  '5분 전 옥상 평수 기준 예상 시공비 제안신청 완료!'
+];
+
+// 구조적 프로퍼티(type) 분기 바인딩
+const RealtimePopup = forwardRef(({ type = 'factory' }, ref) => {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState('');
   const [animate, setAnimate] = useState(false);
 
-  // 평상시 무작위 문장 조립 (지역 포함)
+  // 현재 페이지 타입에 따른 맞춤형 무작위 문장 조립 엔진
   const generateRandomToast = () => {
     const loc = locations[Math.floor(Math.random() * locations.length)];
-    const tar = targets[Math.floor(Math.random() * targets.length)];
-    const suf = suffixes[Math.floor(Math.random() * suffixes.length)];
+    
+    // rps 유입인지 공장 유입인지 판별
+    const isRps = type === 'rps';
+    const targetPool = isRps ? rpsTargets : factoryTargets;
+    const suffixPool = isRps ? rpsSuffixes : factorySuffixes;
+
+    const tar = targetPool[Math.floor(Math.random() * targetPool.length)];
+    const suf = suffixPool[Math.floor(Math.random() * suffixPool.length)];
+    
     return `${loc} ${tar} ${suf}`;
   };
 
-  // 2. [수정] 진짜 신청이 들어왔을 때 실행되는 함수 (지역 제거 및 부지 형태 매칭)
+  // 진짜 양식을 제출했을 때 팝업 강제 구동 스위치
   useImperativeHandle(ref, () => ({
-    triggerRealToast: (name, type) => {
-      // 이름 마스킹 처리 (예: 이정현 -> 이** 사장님)
+    triggerRealToast: (name, typeParam) => {
       const maskedName = name ? `${name.charAt(0)}** 사장님` : '** 사장님';
-      // 부지 형태 매칭 (값이 없으면 기본값 지정)
-      const selectedType = type ? type : '공장 지붕 / 건물 옥상';
+      const selectedType = typeParam ? typeParam : '태양광 발전 부지';
       
       setAnimate(false);
       setVisible(false);
       
       setTimeout(() => {
-        // [수정 완료] 지역 노출을 빼고 이름과 부지 형태 기반으로 깔끔하게 출력
         setText(`📢 [실시간] ${maskedName} [${selectedType}] 방금 전 상담 신청 완료!`);
         setVisible(true);
         setAnimate(true);
@@ -52,6 +73,7 @@ const RealtimePopup = forwardRef((props, ref) => {
     }
   }));
 
+  // 주기적 팝업 루프 렌더링 감지 연동
   useEffect(() => {
     let timeoutId;
 
@@ -89,7 +111,7 @@ const RealtimePopup = forwardRef((props, ref) => {
       clearTimeout(initialId);
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [type]); // 타입 변경 시 인터벌 정상 재배치 스위칭 가동
 
   if (!visible) return null;
 
